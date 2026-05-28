@@ -9,7 +9,7 @@ mkdir -p ~/.local/bin
 
 # Install packages if not already installed
 install_if_missing() {
-    if ! command -v "$1" &> /dev/null; then
+    if ! command -v "$1" &>/dev/null; then
         echo "Installing $1..."
         sudo apt update && sudo apt install -y "$2"
     else
@@ -24,9 +24,10 @@ install_if_missing git git
 install_if_missing ripgrep ripgrep
 install_if_missing gcc gcc
 install_if_missing clangd clangd
+install_if_missing fastfetch fastfetch
 
 # fd-find (package name differs from binary)
-if ! command -v fdfind &> /dev/null && ! command -v fd &> /dev/null; then
+if ! command -v fdfind &>/dev/null && ! command -v fd &>/dev/null; then
     echo "Installing fd-find..."
     sudo apt install -y fd-find
 else
@@ -49,7 +50,7 @@ DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 echo "Creating symlinks..."
 
 # Backup existing files/folders if they are not already symlinks
-for target in ~/.config/nvim ~/.config/kitty ~/.zshrc; do
+for target in ~/.config/nvim ~/.config/kitty ~/.config/fastfetch ~/.zshrc; do
     if [ -e "$target" ] && [ ! -L "$target" ]; then
         echo "  Backing up $target -> ${target}.bak"
         mv "$target" "${target}.bak"
@@ -59,6 +60,7 @@ done
 ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
 ln -sf "$DOTFILES_DIR/kitty" ~/.config/kitty
 ln -sf "$DOTFILES_DIR/zshrc" ~/.zshrc
+ln -sf "$DOTFILES_DIR/fastfetch" ~/.config/fastfetch
 
 # LazyVim: check if already configured
 if [ ! -d ~/.local/share/nvim/lazy/lazy.nvim ]; then
