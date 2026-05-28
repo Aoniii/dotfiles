@@ -4,7 +4,7 @@
         "source": "~/.config/fastfetch/img.jpeg",
         "type": "kitty-icat",
         "width": 44,
-        "height": 22,
+        "height": 44,
         "padding": {
             "top": 1
         }
