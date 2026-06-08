@@ -34,12 +34,13 @@ else
     echo "fd-find already installed"
 fi
 
-# Nerd Font
 if ! fc-list | grep -qi "JetBrainsMono Nerd"; then
     echo "Installing JetBrainsMono Nerd Font..."
-    git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git /tmp/nerd-fonts
-    /tmp/nerd-fonts/install.sh JetBrainsMono
-    rm -rf /tmp/nerd-fonts
+    mkdir -p ~/.local/share/fonts
+    wget -q -P /tmp https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+    tar xf /tmp/JetBrainsMono.tar.xz -C ~/.local/share/fonts/
+    fc-cache -fv
+    rm /tmp/JetBrainsMono.tar.xz
 else
     echo "JetBrainsMono Nerd Font already installed"
 fi
