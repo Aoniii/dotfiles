@@ -104,4 +104,3 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 cd
 fastfetch
-alias clear="fastfetch"
