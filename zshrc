@@ -104,7 +104,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 cd
 fastfetch
-alias clear="fastfetch"
 
 export PATH=$PATH:/home/aoni/.spicetify
 export PATH="$HOME/.local/bin:$PATH"
