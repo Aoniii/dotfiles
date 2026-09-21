@@ -102,9 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-cd
-fastfetch
-
 export PATH=$PATH:/home/aoni/.spicetify
 export PATH="$HOME/.local/bin:$PATH"
 
