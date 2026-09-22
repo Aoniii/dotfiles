@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# C/C++ formatter: uncrustify + tab fixes uncrustify can't do.
+# Usage: cfmt [C|CPP] < file > formatted   (stdin -> stdout, for Zed)
+# Config: uncrustify.cfg next to this script (symlinks resolved).
+set -o pipefail
+dir="$(dirname "$(readlink -f "$0")")"
+lang="${1:-C}"
+uncrustify -q -l "$lang" -c "$dir/uncrustify.cfg" | perl -pe '
+	s/^\}[ \t]+([A-Za-z_]\w*;)/}\t$1/;                    # }	t_name;
+	s/^(#[ \t]*define[ \t]+\w+)[ \t]* [ \t]*(?=\S)/$1\t/;  # lone define: tab
+	s/[ \t]+/ /g if /^typedef\b.*\{\s*$/;                  # typedef struct s_x {
+'
