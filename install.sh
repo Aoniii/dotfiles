@@ -42,12 +42,13 @@ red() { printf '\033[31m%s\033[0m\n' "$*"; }
 link() {
 	local src="$DOTFILES/$1" dst="$2"
 
-	if [ ! -e "$src" ]; then
-		red "  missing in repo: $1"
+	if [ -L "$src" ] || [ ! -e "$src" ]; then
+		red "  missing in repo (or is a symlink): $1"
 		return
 	fi
-	# Already correct: nothing to do
-	if [ -L "$dst" ] && [ "$(readlink -f "$dst")" = "$(readlink -f "$src")" ]; then
+	# Already correct (direct link, or a parent dir already links to the
+	# repo, e.g. ~/.config/zed -> dotfiles/zed): nothing to do
+	if [ -e "$dst" ] && [ "$(readlink -f "$dst")" = "$(readlink -f "$src")" ]; then
 		green "  ok       $dst"
 		return
 	fi

@@ -1,1 +1,99 @@
-/home/aoni/dotfiles/zed/settings.json
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "cli_default_open_behavior": "new_window",
+  "disable_ai": true,
+  "terminal": {
+    "dock": "right"
+  },
+  "project_panel": {
+    "dock": "left",
+    "auto_fold_dirs": false
+  },
+  "auto_install_extensions": {
+      "catppuccin": true,
+      "catppuccin-icons": true,
+      "discord-presence": true,
+      "html": true
+  },
+  "accessible_mode": false,
+  "vim_mode": false,
+  "icon_theme": "Catppuccin Mocha",
+  "base_keymap": "Zed",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Light",
+    "dark": "Catppuccin Mocha",
+  },
+  "show_whitespaces": "boundary",
+  "file_types": {
+    "C": ["h"]
+  },
+  "languages": {
+    "C": {
+      "hard_tabs": true,
+      "tab_size": 4,
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "sh",
+          "arguments": ["-c", "exec \"$HOME/.local/bin/cfmt\" C"]
+        }
+      }
+    },
+    "Shell Script": {
+      "hard_tabs": true,
+      "tab_size": 4,
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "shfmt",
+          "arguments": ["--filename", "{buffer_path}", "-i", "0"]
+        }
+      }
+    },
+    "Python": {
+      "hard_tabs": false,
+      "tab_size": 4,
+      "format_on_save": "on",
+      "formatter": {
+        "language_server": {
+          "name": "ruff"
+        }
+      }
+    },
+  },
+  "lsp": {
+    "discord_presence": {
+      "initialization_options": {
+        "application_id": "1263505205522337886",
+        "base_icons_url": "https://raw.githubusercontent.com/xhyrom/zed-discord-presence/main/assets/icons/",
+        "details": "In {workspace}",
+        "state": "Working on {filename}",
+        "large_image": "{base_icons_url}/zed.png",
+        "large_text": "Zed",
+        "small_image": "{base_icons_url}/{language:lo}.png",
+        "small_text": "{language:u}",
+        "git_integration": true,
+        "idle": {
+          "timeout": 300,
+          "action": "change_activity",
+          "state": "Idling",
+          "details": "In Zed",
+          "large_image": "{base_icons_url}/zed.png",
+          "large_text": "Zed",
+          "small_image": "{base_icons_url}/idle.png",
+          "small_text": "Idle",
+        }
+      }
+    }
+  }
+}
