@@ -5,7 +5,7 @@
 set -o pipefail
 dir="$(dirname "$(readlink -f "$0")")"
 lang="${1:-C}"
-uncrustify -q -l "$lang" -c "$dir/uncrustify.cfg" | perl -pe '
+uncrustify -q -l "$lang" -c "$dir/uncrustify.cfg" | python3 "$dir/cmtfmt.py" | perl -pe '
 	s/^\}[ \t]+([A-Za-z_]\w*;)/}\t$1/;                    # }	t_name;
 	s/^(#[ \t]*define[ \t]+\w+)[ \t]* [ \t]*(?=\S)/$1\t/;  # lone define: tab
 	s/[ \t]+/ /g if /^typedef\b.*\{\s*$/;                  # typedef struct s_x {
