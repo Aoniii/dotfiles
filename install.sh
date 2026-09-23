@@ -21,6 +21,7 @@ LINKS=(
 	"fastfetch              $CONFIG/fastfetch"
 	"zed/settings.json      $CONFIG/zed/settings.json"
 	"uncrustify/cfmt        $HOME/.local/bin/cfmt"
+	"asm-lsp/.asm-lsp.toml  $CONFIG/asm-lsp/.asm-lsp.toml"
 )
 
 # command -> apt package

@@ -7,6 +7,13 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "discord-presence": true,
+    "html": true,
+    "assembly": true
+  },
   "cli_default_open_behavior": "new_window",
   "disable_ai": true,
   "terminal": {
@@ -15,12 +22,6 @@
   "project_panel": {
     "dock": "left",
     "auto_fold_dirs": false
-  },
-  "auto_install_extensions": {
-      "catppuccin": true,
-      "catppuccin-icons": true,
-      "discord-presence": true,
-      "html": true
   },
   "accessible_mode": false,
   "vim_mode": false,
@@ -70,8 +71,18 @@
         }
       }
     },
+    "Assembly": {
+      "hard_tabs": true,
+      "tab_size": 4,
+    },
   },
   "lsp": {
+    "asm-lsp": {
+      "binary": {
+        "path": "~/.cargo/bin/asm-lsp",
+        "arguments": []
+      }
+    },
     "discord_presence": {
       "initialization_options": {
         "application_id": "1263505205522337886",
